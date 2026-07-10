@@ -221,37 +221,8 @@ function PartnerOrb({ p, i }: { p: (typeof PARTNERS)[number]; i: number }) {
   );
 }
 
-function PartnerLogo({ p, i }: { p: (typeof PARTNERS)[number]; i: number }) {
-  return (
-    <a
-      href={p.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group relative block"
-      aria-label={p.name}
-    >
-      <span
-        className="absolute inset-0 rounded-full opacity-60 blur-xl transition-all duration-300 group-hover:opacity-100"
-        style={{ background: "radial-gradient(circle, rgba(214,40,40,0.35), transparent 70%)" }}
-      />
-      <span
-        className="relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-full glass transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 sm:h-28 sm:w-28"
-        style={{
-          animation: `float-y 5s ease-in-out ${i * 0.4}s infinite`,
-          boxShadow:
-            "0 20px 40px -20px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.12)",
-        }}
-      >
-        <img
-          src={p.logo}
-          alt={p.name}
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
-      </span>
-    </a>
-  );
-}
+
+
 
 function LinkTile({
   href,
