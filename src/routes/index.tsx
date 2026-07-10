@@ -178,16 +178,12 @@ function CouponCard() {
     } catch {}
   };
   return (
-    <div className="relative mx-auto mt-10 max-w-md">
-      <div
-        className="absolute -inset-4 rounded-2xl opacity-40 blur-2xl"
-        style={{ background: "radial-gradient(circle, rgba(214,40,40,0.5), transparent 70%)" }}
-      />
-      <div className="glass-strong relative overflow-hidden rounded-xl px-6 py-6 text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-white/50">Use o cupom</p>
-        <div className="mt-3 flex items-center justify-center gap-3">
+    <div className="relative mx-auto mt-12 max-w-md animate-blur-reveal">
+      <div className="coupon-card">
+        <p className="text-[10px] uppercase tracking-[0.35em] text-white/50">Use o cupom</p>
+        <div className="mt-4 flex items-center justify-center">
           <span
-            className="font-display text-4xl sm:text-5xl tracking-[0.2em]"
+            className="font-display text-4xl sm:text-5xl tracking-[0.25em]"
             style={{ color: "#fff", textShadow: "0 0 24px rgba(214,40,40,0.55)" }}
           >
             MATEUS
@@ -196,11 +192,32 @@ function CouponCard() {
         <p className="mt-3 text-sm text-white/60">
           para garantir desconto nas compras.
         </p>
-        <button onClick={copy} className="btn-ghost mt-5 w-full sm:w-auto text-sm">
-          {copied ? "✓ Cupom copiado" : "Copiar cupom"}
+        <button
+          onClick={copy}
+          className={`btn-copy mt-6 ${copied ? "is-copied" : ""}`}
+          aria-live="polite"
+        >
+          {copied ? "✓ Cupom copiado com sucesso!" : "Copiar cupom"}
         </button>
       </div>
     </div>
+  );
+}
+
+function PartnerOrb({ p, i }: { p: (typeof PARTNERS)[number]; i: number }) {
+  return (
+    <a
+      href={p.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="partner-orb animate-blur-reveal"
+      style={{ animationDelay: `${i * 120}ms` }}
+      aria-label={p.name}
+    >
+      <span className="partner-orb-inner">
+        <img src={p.logo} alt={p.name} loading="lazy" draggable={false} />
+      </span>
+    </a>
   );
 }
 
