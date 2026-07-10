@@ -1,24 +1,501 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import mateusAsset from "@/assets/mateus.asset.json";
+import monteLesteAsset from "@/assets/monte-leste.asset.json";
+import darkLabAsset from "@/assets/dark-lab.asset.json";
+import formulaAsset from "@/assets/formula-expressa.asset.json";
+import consultoriaAsset from "@/assets/consultoria.asset.json";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: Landing,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+const LINKS = {
+  consultoria:
+    "https://api.whatsapp.com/send/?phone=551151991683&text=Oi!%20Vim%20do%20stories%20do%20Instagram%20do%20Mateus%20e%20quero%20saber%20mais%20sobre%20o%20Esquadr%C3%A3o%20%C3%81guia%20%EF%BF%BD&type=phone_number&app_absent=0&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+  monteLeste:
+    "https://www.monteleste.com.br/?utm_source=influenciador&utm_medium=social&utm_campaign=mateus&utm_content=link_in_bio",
+  darkLab:
+    "https://darklabsuplementos.com.br/?utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+  formula:
+    "https://www.formulaexpressa.com.br/?utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+  tiktok:
+    "https://www.tiktok.com/@mateusfreaky?_r=1&_t=zs-945k1qggqks&utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+  youtube:
+    "https://m.youtube.com/@mateusfreaky?utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+  instagram:
+    "https://www.instagram.com/mateusfreaky?utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+};
+
+const PARTNERS = [
+  { name: "Monte Leste", logo: monteLesteAsset.url, href: LINKS.monteLeste },
+  { name: "Dark Lab", logo: darkLabAsset.url, href: LINKS.darkLab },
+  { name: "Formula Expressa", logo: formulaAsset.url, href: LINKS.formula },
+];
+
+function useReveal<T extends HTMLElement>() {
+  const ref = useRef<T | null>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add("in-view");
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.15 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
+
+function Particles() {
+  const items = Array.from({ length: 22 });
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {items.map((_, i) => {
+        const size = Math.random() * 2 + 1;
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const dx = (Math.random() - 0.5) * 120;
+        const dy = -(Math.random() * 200 + 80);
+        const duration = Math.random() * 10 + 12;
+        const delay = Math.random() * 8;
+        return (
+          <span
+            key={i}
+            className="absolute rounded-full bg-white/60"
+            style={{
+              width: size,
+              height: size,
+              left: `${left}%`,
+              top: `${top}%`,
+              // @ts-expect-error css vars
+              "--dx": `${dx}px`,
+              "--dy": `${dy}px`,
+              animation: `particle-drift ${duration}s linear ${delay}s infinite`,
+              boxShadow: "0 0 6px rgba(255,255,255,0.5)",
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+function HeroPortrait() {
+  const wrap = useRef<HTMLDivElement>(null);
+  const [t, setT] = useState({ x: 0, y: 0 });
+
+  const onMove = (e: React.MouseEvent) => {
+    const r = wrap.current?.getBoundingClientRect();
+    if (!r) return;
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    setT({ x: (e.clientX - cx) / 40, y: (e.clientY - cy) / 40 });
+  };
+  const onLeave = () => setT({ x: 0, y: 0 });
+
   return (
     <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
+      ref={wrap}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      className="relative mx-auto flex h-[300px] w-[300px] items-center justify-center sm:h-[380px] sm:w-[380px] lg:h-[440px] lg:w-[440px]"
+      style={{ transform: `translate3d(${t.x}px, ${t.y}px, 0)`, transition: "transform 400ms cubic-bezier(0.2,0.7,0.2,1)" }}
     >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
+      {/* Halo */}
+      <div
+        className="absolute inset-0 rounded-full animate-pulse-glow"
+        style={{
+          background:
+            "radial-gradient(circle at center, rgba(214,40,40,0.25) 0%, rgba(214,40,40,0.08) 40%, transparent 70%)",
+          filter: "blur(30px)",
+        }}
       />
+      <div
+        className="absolute inset-[-10%] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, transparent 60%)",
+          filter: "blur(20px)",
+        }}
+      />
+
+      {/* Rotating conic ring */}
+      <div
+        className="absolute inset-[-6%] rounded-full animate-spin-slow opacity-70"
+        style={{
+          background:
+            "conic-gradient(from 0deg, transparent 0deg, rgba(214,40,40,0.9) 40deg, transparent 90deg, transparent 180deg, rgba(255,255,255,0.6) 220deg, transparent 260deg, transparent 360deg)",
+          WebkitMask: "radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))",
+          mask: "radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))",
+        }}
+      />
+      <div
+        className="absolute inset-[-2%] rounded-full animate-spin-reverse opacity-40"
+        style={{
+          background:
+            "conic-gradient(from 180deg, transparent 0deg, rgba(255,255,255,0.7) 60deg, transparent 140deg, transparent 360deg)",
+          WebkitMask: "radial-gradient(farthest-side, transparent calc(100% - 1px), #000 calc(100% - 1px))",
+          mask: "radial-gradient(farthest-side, transparent calc(100% - 1px), #000 calc(100% - 1px))",
+        }}
+      />
+
+      {/* Photo */}
+      <div className="relative h-[86%] w-[86%] animate-breathe">
+        <div
+          className="absolute inset-0 rounded-full"
+          style={{
+            boxShadow:
+              "0 40px 80px -20px rgba(0,0,0,0.9), 0 0 60px -10px rgba(214,40,40,0.25), inset 0 0 0 1px rgba(255,255,255,0.08)",
+          }}
+        />
+        <img
+          src={mateusAsset.url}
+          alt="Mateus Moraes"
+          className="relative h-full w-full rounded-full object-cover"
+          draggable={false}
+        />
+      </div>
     </div>
+  );
+}
+
+function CouponCard() {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText("MATEUS");
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {}
+  };
+  return (
+    <div className="relative mx-auto mt-10 max-w-md">
+      <div
+        className="absolute -inset-4 rounded-2xl opacity-40 blur-2xl"
+        style={{ background: "radial-gradient(circle, rgba(214,40,40,0.5), transparent 70%)" }}
+      />
+      <div className="glass-strong relative overflow-hidden rounded-xl px-6 py-6 text-center">
+        <p className="text-xs uppercase tracking-[0.3em] text-white/50">Use o cupom</p>
+        <div className="mt-3 flex items-center justify-center gap-3">
+          <span
+            className="font-display text-4xl sm:text-5xl tracking-[0.2em]"
+            style={{ color: "#fff", textShadow: "0 0 24px rgba(214,40,40,0.55)" }}
+          >
+            MATEUS
+          </span>
+        </div>
+        <p className="mt-3 text-sm text-white/60">
+          para garantir desconto nas compras.
+        </p>
+        <button onClick={copy} className="btn-ghost mt-5 w-full sm:w-auto text-sm">
+          {copied ? "✓ Cupom copiado" : "Copiar cupom"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function PartnerLogo({ p, i }: { p: (typeof PARTNERS)[number]; i: number }) {
+  return (
+    <a
+      href={p.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative block"
+      aria-label={p.name}
+    >
+      <span
+        className="absolute inset-0 rounded-full opacity-60 blur-xl transition-all duration-300 group-hover:opacity-100"
+        style={{ background: "radial-gradient(circle, rgba(214,40,40,0.35), transparent 70%)" }}
+      />
+      <span
+        className="relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-full glass transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 sm:h-28 sm:w-28"
+        style={{
+          animation: `float-y 5s ease-in-out ${i * 0.4}s infinite`,
+          boxShadow:
+            "0 20px 40px -20px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.12)",
+        }}
+      >
+        <img
+          src={p.logo}
+          alt={p.name}
+          className="h-full w-full object-cover"
+          loading="lazy"
+        />
+      </span>
+    </a>
+  );
+}
+
+function LinkTile({
+  href,
+  label,
+  sub,
+  icon,
+}: {
+  href: string;
+  label: string;
+  sub?: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative flex items-center gap-4 overflow-hidden rounded-xl glass px-5 py-4 transition-all duration-300 hover:-translate-y-1"
+      style={{ boxShadow: "0 10px 30px -15px rgba(0,0,0,0.8)" }}
+    >
+      <span
+        className="pointer-events-none absolute inset-y-0 left-0 w-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{ background: "linear-gradient(180deg, #d62828, transparent)" }}
+      />
+      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/5 text-white/80 transition group-hover:bg-white/10">
+        {icon}
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block truncate font-display text-lg tracking-widest">{label}</span>
+        {sub ? <span className="block truncate text-xs text-white/50">{sub}</span> : null}
+      </span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="shrink-0 text-white/40 transition group-hover:translate-x-1 group-hover:text-white">
+        <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </a>
+  );
+}
+
+function Landing() {
+  const partnersRef = useReveal<HTMLDivElement>();
+  const consultRef = useReveal<HTMLDivElement>();
+  const linksRef = useReveal<HTMLDivElement>();
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <main className="relative min-h-screen overflow-hidden bg-[#050505] text-white">
+      {/* Global vignette */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 0%, rgba(214,40,40,0.10), transparent 60%), radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.03), transparent 60%)",
+        }}
+      />
+
+      {/* HERO */}
+      <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-16">
+        <Particles />
+
+        <div className="relative z-10 flex flex-col items-center text-center">
+          <div className="animate-fade-in">
+            <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/60">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#d62828] shadow-[0_0_10px_#d62828]" />
+              @mateusfreaky
+            </span>
+          </div>
+
+          <div className="mt-8 animate-scale-in">
+            <HeroPortrait />
+          </div>
+
+          <h1
+            className="mt-10 font-display text-5xl leading-none tracking-[0.08em] sm:text-7xl lg:text-8xl animate-fade-up"
+            style={{ animationDelay: "150ms" }}
+          >
+            <span className="text-shimmer">MATEUS MORAES</span>
+          </h1>
+
+          <p
+            className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.35em] text-white/60 animate-fade-up sm:text-sm"
+            style={{ animationDelay: "300ms" }}
+          >
+            <span>Treino</span>
+            <span className="text-[#d62828]">•</span>
+            <span>Dieta</span>
+            <span className="text-[#d62828]">•</span>
+            <span>Lifestyle</span>
+            <span className="text-[#d62828]">•</span>
+            <span>Meio-Maratonista</span>
+          </p>
+
+          <p
+            className="mt-6 max-w-md text-balance text-sm text-white/60 animate-fade-up sm:text-base"
+            style={{ animationDelay: "420ms" }}
+          >
+            Disciplina transforma pessoas comuns em extraordinárias.
+          </p>
+
+          <button
+            onClick={() => scrollTo("evolucao")}
+            className="btn-primary mt-10 animate-fade-up"
+            style={{ animationDelay: "540ms" }}
+          >
+            Começar minha evolução
+          </button>
+
+          <button
+            onClick={() => scrollTo("evolucao")}
+            aria-label="Rolar para baixo"
+            className="mt-14 text-white/40 transition hover:text-white animate-fade-in"
+            style={{ animationDelay: "800ms" }}
+          >
+            <svg width="22" height="34" viewBox="0 0 22 34" fill="none" className="animate-float-y">
+              <rect x="1" y="1" width="20" height="32" rx="10" stroke="currentColor" strokeWidth="1.5" />
+              <circle cx="11" cy="10" r="2" fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      {/* CONSULTORIA */}
+      <section id="evolucao" className="relative z-10 px-6 py-24 sm:py-32">
+        <div ref={consultRef} className="reveal mx-auto max-w-5xl">
+          <div className="text-center">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-[#d62828]">Consultoria</span>
+            <h2 className="mt-3 font-display text-4xl tracking-widest sm:text-6xl">
+              CONSULTORIA <span className="text-[#d62828]">INDIVIDUALIZADA</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm text-white/60 sm:text-base">
+              Treino, dieta e acompanhamento montados sob medida para transformar sua rotina em resultado real.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:items-stretch">
+            <div className="glass-strong relative overflow-hidden rounded-2xl">
+              <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-full">
+                <img src={consultoriaAsset.url} alt="Transformação real" className="h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-[10px] uppercase tracking-[0.35em] text-white/60">Resultado real</p>
+                  <p className="font-display text-2xl tracking-wider">Antes • Depois</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="glass rounded-2xl p-8 sm:p-10">
+              <ul className="space-y-4 text-sm sm:text-base">
+                {[
+                  "Plano de treino 100% personalizado",
+                  "Estratégia de dieta com objetivo claro",
+                  "Acompanhamento próximo via WhatsApp",
+                  "Ajustes semanais baseados em performance",
+                  "Mentalidade, disciplina e evolução contínua",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#d62828]/20 text-[#d62828]">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12l5 5L20 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <span className="text-white/80">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a href={LINKS.consultoria} target="_blank" rel="noopener noreferrer" className="btn-primary mt-8 w-full">
+                Quero minha consultoria
+              </a>
+              <p className="mt-3 text-center text-[10px] uppercase tracking-[0.3em] text-white/40">
+                Vagas limitadas — Esquadrão Águia
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PARTNERS */}
+      <section className="relative z-10 px-6 py-20">
+        <div ref={partnersRef} className="reveal mx-auto max-w-4xl text-center">
+          <span className="text-[10px] uppercase tracking-[0.4em] text-[#d62828]">Parceiros</span>
+          <h2 className="mt-3 font-display text-3xl tracking-widest sm:text-5xl">PARCEIROS</h2>
+          <p className="mx-auto mt-3 max-w-md text-sm text-white/60">
+            Produtos e marcas que fazem parte da minha rotina.
+          </p>
+
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+            {PARTNERS.map((p, i) => (
+              <PartnerLogo key={p.name} p={p} i={i} />
+            ))}
+          </div>
+
+          <CouponCard />
+        </div>
+      </section>
+
+      {/* LINKS */}
+      <section className="relative z-10 px-6 py-20">
+        <div ref={linksRef} className="reveal mx-auto max-w-xl">
+          <div className="text-center">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-[#d62828]">Redes</span>
+            <h2 className="mt-3 font-display text-3xl tracking-widest sm:text-5xl">ME SIGA</h2>
+          </div>
+          <div className="mt-8 grid gap-3">
+            <LinkTile
+              href={LINKS.instagram}
+              label="Instagram"
+              sub="@mateusfreaky"
+              icon={
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+                </svg>
+              }
+            />
+            <LinkTile
+              href={LINKS.tiktok}
+              label="TikTok"
+              sub="@mateusfreaky"
+              icon={
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 3v3.2A5.3 5.3 0 0 0 21 11v3a8.3 8.3 0 0 1-5-1.7V17a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V3h3z" />
+                </svg>
+              }
+            />
+            <LinkTile
+              href={LINKS.youtube}
+              label="YouTube"
+              sub="@mateusfreaky"
+              icon={
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23 12s0-3.3-.4-4.8a2.6 2.6 0 0 0-1.8-1.8C19.3 5 12 5 12 5s-7.3 0-8.8.4A2.6 2.6 0 0 0 1.4 7.2C1 8.7 1 12 1 12s0 3.3.4 4.8a2.6 2.6 0 0 0 1.8 1.8C4.7 19 12 19 12 19s7.3 0 8.8-.4a2.6 2.6 0 0 0 1.8-1.8c.4-1.5.4-4.8.4-4.8zM10 15V9l5 3-5 3z" />
+                </svg>
+              }
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="relative z-10 border-t border-white/5 px-6 py-14">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="font-display text-2xl tracking-[0.3em] sm:text-3xl">
+            PERFORMANCE. <span className="text-[#d62828]">DISCIPLINA.</span> RESULTADOS.
+          </p>
+          <a
+            href={LINKS.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-block text-sm text-white/60 transition hover:text-white"
+          >
+            @mateusfreaky
+          </a>
+          <p className="mt-6 text-[10px] uppercase tracking-[0.35em] text-white/30">
+            © 2026 Mateus Moraes
+          </p>
+        </div>
+      </footer>
+    </main>
   );
 }
