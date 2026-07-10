@@ -403,23 +403,51 @@ function Landing() {
       </section>
 
       {/* PARTNERS */}
-      <section className="relative z-10 px-6 py-20">
+      <section className="relative z-10 px-6 py-24">
         <div ref={partnersRef} className="reveal mx-auto max-w-4xl text-center">
           <span className="text-[10px] uppercase tracking-[0.4em] text-[#d62828]">Parceiros</span>
-          <h2 className="mt-3 font-display text-3xl tracking-widest sm:text-5xl">PARCEIROS</h2>
-          <p className="mx-auto mt-3 max-w-md text-sm text-white/60">
-            Produtos e marcas que fazem parte da minha rotina.
+          <h2 className="mt-3 font-display text-3xl tracking-widest sm:text-5xl">MARCAS PARCEIRAS</h2>
+          <p className="mx-auto mt-4 max-w-lg text-sm text-white/60 sm:text-base">
+            Utilizo e recomendo apenas marcas que fazem parte da minha rotina e entregam qualidade de verdade.
           </p>
 
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-8 sm:gap-12">
-            {PARTNERS.map((p, i) => (
-              <PartnerLogo key={p.name} p={p} i={i} />
-            ))}
+          {/* Triangle layout: two top, one bottom-center */}
+          <div className="mx-auto mt-14 flex max-w-sm flex-col items-center gap-10 sm:max-w-md sm:gap-12">
+            <div className="flex w-full items-center justify-center gap-10 sm:gap-16">
+              <PartnerOrb p={PARTNERS[0]} i={0} />
+              <PartnerOrb p={PARTNERS[1]} i={1} />
+            </div>
+            <PartnerOrb p={PARTNERS[2]} i={2} />
           </div>
 
           <CouponCard />
+
+          {/* Parcerias / contato */}
+          <div className="mx-auto mt-10 max-w-md animate-blur-reveal" style={{ animationDelay: "200ms" }}>
+            <div className="glass flex flex-col items-center gap-3 rounded-xl px-6 py-5 sm:flex-row sm:justify-between sm:text-left">
+              <div className="flex items-center gap-3">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white/5 text-white/70">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m3 7 9 6 9-6" />
+                  </svg>
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[10px] uppercase tracking-[0.35em] text-white/50">Parcerias</p>
+                  <p className="truncate text-sm text-white/80">contatosmateusmoraes@gmail.com</p>
+                </div>
+              </div>
+              <a
+                href="mailto:contatosmateusmoraes@gmail.com"
+                className="btn-ghost text-[11px] sm:text-xs"
+              >
+                Enviar e-mail
+              </a>
+            </div>
+          </div>
         </div>
       </section>
+
 
       {/* LINKS */}
       <section className="relative z-10 px-6 py-20">
