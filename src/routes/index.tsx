@@ -374,7 +374,7 @@ function Landing() {
             className="mt-10 font-display text-5xl leading-none tracking-[0.08em] sm:text-7xl lg:text-8xl animate-fade-up"
             style={{ animationDelay: "150ms" }}
           >
-            <span className="text-shimmer">MATEUS MORAES</span>
+            <span className="text-shimmer title-glow">MATEUS MORAES</span>
           </h1>
 
           <p
