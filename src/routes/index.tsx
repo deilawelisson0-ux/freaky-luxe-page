@@ -219,20 +219,38 @@ function CouponCard() {
   );
 }
 
-function PartnerOrb({ p, i }: { p: (typeof PARTNERS)[number]; i: number }) {
+function PartnerCard({ p, i }: { p: (typeof PARTNERS)[number]; i: number }) {
   return (
-    <a
-      href={p.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="partner-orb animate-blur-reveal"
-      style={{ animationDelay: `${i * 120}ms` }}
-      aria-label={p.name}
+    <div
+      className="partner-card group animate-fade-up"
+      style={{ animationDelay: `${i * 140}ms` }}
     >
-      <span className="partner-orb-inner">
-        <img src={p.logo} alt={p.name} loading="lazy" draggable={false} />
-      </span>
-    </a>
+      <a
+        href={p.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={p.name}
+        className="partner-orb block"
+      >
+        <span className="partner-orb-inner">
+          <img src={p.logo} alt={p.name} loading="lazy" draggable={false} />
+        </span>
+      </a>
+      <h3 className="partner-name mt-8 font-display text-xl tracking-[0.2em] sm:text-2xl">
+        {p.name}
+      </h3>
+      <p className="mt-4 max-w-[15rem] text-sm leading-relaxed text-white/55">
+        {p.description}
+      </p>
+      <a
+        href={p.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn-access mt-8"
+      >
+        Acessar
+      </a>
+    </div>
   );
 }
 
