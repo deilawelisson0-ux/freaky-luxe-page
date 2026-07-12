@@ -28,9 +28,24 @@ const LINKS = {
 };
 
 const PARTNERS = [
-  { name: "Monte Leste", logo: monteLesteAsset.url, href: LINKS.monteLeste },
-  { name: "Dark Lab", logo: darkLabAsset.url, href: LINKS.darkLab },
-  { name: "Formula Expressa", logo: formulaAsset.url, href: LINKS.formula },
+  {
+    name: "Monte Leste",
+    logo: monteLesteAsset.url,
+    href: LINKS.monteLeste,
+    description: "Streetwear premium para quem vive o lifestyle fitness.",
+  },
+  {
+    name: "Dark Lab",
+    logo: darkLabAsset.url,
+    href: LINKS.darkLab,
+    description: "Suplementação de alta performance para maximizar seus resultados.",
+  },
+  {
+    name: "Fórmula Expressa",
+    logo: formulaAsset.url,
+    href: LINKS.formula,
+    description: "Manipulados personalizados para potencializar sua evolução.",
+  },
 ];
 
 function useReveal<T extends HTMLElement>() {
