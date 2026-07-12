@@ -106,16 +106,32 @@ function Particles() {
 
 function HeroPortrait() {
   const wrap = useRef<HTMLDivElement>(null);
-  const [t, setT] = useState({ x: 0, y: 0 });
+  const [t, setT] = useState({ x: 0, y: 0, rx: 0, ry: 0 });
 
   const onMove = (e: React.MouseEvent) => {
     const r = wrap.current?.getBoundingClientRect();
     if (!r) return;
     const cx = r.left + r.width / 2;
     const cy = r.top + r.height / 2;
-    setT({ x: (e.clientX - cx) / 40, y: (e.clientY - cy) / 40 });
+    const nx = (e.clientX - cx) / (r.width / 2);
+    const ny = (e.clientY - cy) / (r.height / 2);
+    setT({
+      x: nx * 6,
+      y: ny * 6,
+      ry: nx * 2,
+      rx: -ny * 2,
+    });
   };
-  const onLeave = () => setT({ x: 0, y: 0 });
+  const onLeave = () => setT({ x: 0, y: 0, rx: 0, ry: 0 });
+
+  // Orbiting particles config
+  const orbits = [
+    { r: 44, dur: 18, delay: 0, dir: "cw" as const, size: 3 },
+    { r: 44, dur: 18, delay: -9, dir: "cw" as const, size: 2 },
+    { r: 52, dur: 26, delay: -4, dir: "ccw" as const, size: 2 },
+    { r: 52, dur: 26, delay: -18, dir: "ccw" as const, size: 3 },
+    { r: 48, dur: 22, delay: -12, dir: "cw" as const, size: 2 },
+  ];
 
   return (
     <div
@@ -123,14 +139,21 @@ function HeroPortrait() {
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       className="relative mx-auto flex h-[300px] w-[300px] items-center justify-center sm:h-[380px] sm:w-[380px] lg:h-[440px] lg:w-[440px]"
-      style={{ transform: `translate3d(${t.x}px, ${t.y}px, 0)`, transition: "transform 400ms cubic-bezier(0.2,0.7,0.2,1)" }}
+      style={{
+        transform: `translate3d(${t.x}px, ${t.y}px, 0) perspective(900px) rotateX(${t.rx}deg) rotateY(${t.ry}deg)`,
+        transition: "transform 500ms cubic-bezier(0.2,0.7,0.2,1)",
+        transformStyle: "preserve-3d",
+      }}
     >
-      {/* Halo */}
+      {/* Outer translucent depth veil */}
+      <div className="hero-outer-veil" />
+
+      {/* Deep red radial halo */}
       <div
         className="absolute inset-0 rounded-full animate-pulse-glow"
         style={{
           background:
-            "radial-gradient(circle at center, rgba(214,40,40,0.25) 0%, rgba(214,40,40,0.08) 40%, transparent 70%)",
+            "radial-gradient(circle at center, rgba(214,40,40,0.28) 0%, rgba(214,40,40,0.08) 40%, transparent 70%)",
           filter: "blur(30px)",
         }}
       />
@@ -138,30 +161,39 @@ function HeroPortrait() {
         className="absolute inset-[-10%] rounded-full"
         style={{
           background:
-            "radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, transparent 60%)",
-          filter: "blur(20px)",
+            "radial-gradient(circle at center, rgba(255,255,255,0.06) 0%, transparent 60%)",
+          filter: "blur(22px)",
         }}
       />
 
-      {/* Rotating conic ring */}
+      {/* Rotating conic accent (kept, softer) */}
       <div
-        className="absolute inset-[-6%] rounded-full animate-spin-slow opacity-70"
+        className="absolute inset-[-6%] rounded-full animate-spin-slow opacity-40"
         style={{
           background:
-            "conic-gradient(from 0deg, transparent 0deg, rgba(214,40,40,0.9) 40deg, transparent 90deg, transparent 180deg, rgba(255,255,255,0.6) 220deg, transparent 260deg, transparent 360deg)",
+            "conic-gradient(from 0deg, transparent 0deg, rgba(214,40,40,0.8) 40deg, transparent 90deg, transparent 180deg, rgba(255,255,255,0.5) 220deg, transparent 260deg, transparent 360deg)",
           WebkitMask: "radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))",
           mask: "radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))",
         }}
       />
-      <div
-        className="absolute inset-[-2%] rounded-full animate-spin-reverse opacity-40"
-        style={{
-          background:
-            "conic-gradient(from 180deg, transparent 0deg, rgba(255,255,255,0.7) 60deg, transparent 140deg, transparent 360deg)",
-          WebkitMask: "radial-gradient(farthest-side, transparent calc(100% - 1px), #000 calc(100% - 1px))",
-          mask: "radial-gradient(farthest-side, transparent calc(100% - 1px), #000 calc(100% - 1px))",
-        }}
-      />
+
+      {/* Orbiting particles */}
+      <div className="hero-orbit">
+        {orbits.map((o, idx) => (
+          <span
+            key={idx}
+            className="hero-orbit-dot"
+            style={{
+              width: o.size,
+              height: o.size,
+              margin: `-${o.size / 2}px 0 0 -${o.size / 2}px`,
+              // @ts-expect-error css var
+              "--r": `${o.r}%`,
+              animation: `${o.dir === "cw" ? "orbit-cw" : "orbit-ccw"} ${o.dur}s linear ${o.delay}s infinite`,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Photo */}
       <div className="relative h-[86%] w-[86%] animate-breathe">
@@ -178,10 +210,15 @@ function HeroPortrait() {
           className="relative h-full w-full rounded-full object-cover"
           draggable={false}
         />
+        {/* Metallic thin ring */}
+        <div className="hero-metallic-ring" />
+        {/* One-time studio reflex */}
+        <div className="hero-reflex" />
       </div>
     </div>
   );
 }
+
 
 function CouponCard() {
   const [copied, setCopied] = useState(false);
@@ -315,10 +352,13 @@ function Landing() {
       />
 
       {/* HERO */}
-      <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-16">
+      <section className="relative z-10 flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-16">
+        <div className="hero-fog" />
+        <div className="hero-dust" />
         <Particles />
 
         <div className="relative z-10 flex flex-col items-center text-center">
+
           <div className="animate-fade-in">
             <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/60">
               <span className="h-1.5 w-1.5 rounded-full bg-[#d62828] shadow-[0_0_10px_#d62828]" />
@@ -334,7 +374,7 @@ function Landing() {
             className="mt-10 font-display text-5xl leading-none tracking-[0.08em] sm:text-7xl lg:text-8xl animate-fade-up"
             style={{ animationDelay: "150ms" }}
           >
-            <span className="text-shimmer">MATEUS MORAES</span>
+            <span className="text-shimmer title-glow">MATEUS MORAES</span>
           </h1>
 
           <p
