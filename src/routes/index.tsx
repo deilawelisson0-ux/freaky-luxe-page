@@ -444,13 +444,10 @@ function Landing() {
             Utilizo e recomendo apenas marcas que fazem parte da minha rotina e entregam qualidade de verdade.
           </p>
 
-          {/* Triangle layout: two top, one bottom-center */}
-          <div className="mx-auto mt-14 flex max-w-sm flex-col items-center gap-10 sm:max-w-md sm:gap-12">
-            <div className="flex w-full items-center justify-center gap-10 sm:gap-16">
-              <PartnerOrb p={PARTNERS[0]} i={0} />
-              <PartnerOrb p={PARTNERS[1]} i={1} />
-            </div>
-            <PartnerOrb p={PARTNERS[2]} i={2} />
+          <div className="mx-auto mt-16 grid gap-16 sm:mt-20 md:grid-cols-3 md:gap-10 lg:gap-14">
+            {PARTNERS.map((p, i) => (
+              <PartnerCard key={p.name} p={p} i={i} />
+            ))}
           </div>
 
           <CouponCard />
