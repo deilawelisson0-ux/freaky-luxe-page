@@ -352,10 +352,13 @@ function Landing() {
       />
 
       {/* HERO */}
-      <section className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-16">
+      <section className="relative z-10 flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-16">
+        <div className="hero-fog" />
+        <div className="hero-dust" />
         <Particles />
 
         <div className="relative z-10 flex flex-col items-center text-center">
+
           <div className="animate-fade-in">
             <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/60">
               <span className="h-1.5 w-1.5 rounded-full bg-[#d62828] shadow-[0_0_10px_#d62828]" />
