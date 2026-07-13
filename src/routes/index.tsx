@@ -384,10 +384,12 @@ function Landing() {
           </div>
 
           <h1
-            className="mt-10 font-display text-5xl leading-none tracking-[0.08em] sm:text-7xl lg:text-8xl animate-fade-up"
+            className="mt-10 font-display text-[3.6rem] leading-none tracking-[0.11em] sm:text-[5.2rem] lg:text-[6.6rem] animate-fade-up"
             style={{ animationDelay: "150ms" }}
           >
-            <span className="text-shimmer title-glow">MATEUS MORAES</span>
+            <span className="name-sheen-wrap">
+              <span className="name-brushed title-glow">MATEUS MORAES</span>
+            </span>
           </h1>
 
           <p
