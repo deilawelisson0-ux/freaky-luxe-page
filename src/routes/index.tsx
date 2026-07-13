@@ -143,8 +143,12 @@ function HeroPortrait() {
         transform: `translate3d(${t.x}px, ${t.y}px, 0) perspective(900px) rotateX(${t.rx}deg) rotateY(${t.ry}deg)`,
         transition: "transform 500ms cubic-bezier(0.2,0.7,0.2,1)",
         transformStyle: "preserve-3d",
+        willChange: "transform",
       }}
     >
+      {/* Cinematic spotlight ~500px */}
+      <div className="hero-spotlight" />
+
       {/* Outer translucent depth veil */}
       <div className="hero-outer-veil" />
 
@@ -153,7 +157,7 @@ function HeroPortrait() {
         className="absolute inset-0 rounded-full animate-pulse-glow"
         style={{
           background:
-            "radial-gradient(circle at center, rgba(214,40,40,0.28) 0%, rgba(214,40,40,0.08) 40%, transparent 70%)",
+            "radial-gradient(circle at center, rgba(214,40,40,0.32) 0%, rgba(214,40,40,0.10) 40%, transparent 70%)",
           filter: "blur(30px)",
         }}
       />
@@ -165,6 +169,9 @@ function HeroPortrait() {
           filter: "blur(22px)",
         }}
       />
+
+      {/* HUD ticks — slow rotation (60s) */}
+      <div className="hero-hud" />
 
       {/* Rotating conic accent (kept, softer) */}
       <div
@@ -195,25 +202,31 @@ function HeroPortrait() {
         ))}
       </div>
 
-      {/* Photo */}
-      <div className="relative h-[86%] w-[86%] animate-breathe">
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            boxShadow:
-              "0 40px 80px -20px rgba(0,0,0,0.9), 0 0 60px -10px rgba(214,40,40,0.25), inset 0 0 0 1px rgba(255,255,255,0.08)",
-          }}
-        />
-        <img
-          src={mateusAsset.url}
-          alt="Mateus Moraes"
-          className="relative h-full w-full rounded-full object-cover"
-          draggable={false}
-        />
-        {/* Metallic thin ring */}
-        <div className="hero-metallic-ring" />
-        {/* One-time studio reflex */}
-        <div className="hero-reflex" />
+      {/* Photo — entrance zoom + soft float */}
+      <div className="relative h-[86%] w-[86%] animate-portrait-in">
+        <div className="relative h-full w-full animate-float-soft">
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              boxShadow:
+                "0 40px 80px -20px rgba(0,0,0,0.95), 0 0 70px -10px rgba(214,40,40,0.35), inset 0 0 0 1px rgba(255,255,255,0.08)",
+            }}
+          />
+          <img
+            src={mateusAsset.url}
+            alt="Mateus Moraes"
+            className="relative h-full w-full rounded-full object-cover"
+            draggable={false}
+          />
+          {/* Inner red rim */}
+          <div className="hero-inner-rim" />
+          {/* Brushed metallic signature ring */}
+          <div className="hero-brushed-ring" />
+          {/* Thin metallic ring */}
+          <div className="hero-metallic-ring" />
+          {/* One-time studio reflex */}
+          <div className="hero-reflex" />
+        </div>
       </div>
     </div>
   );
@@ -371,10 +384,12 @@ function Landing() {
           </div>
 
           <h1
-            className="mt-10 font-display text-5xl leading-none tracking-[0.08em] sm:text-7xl lg:text-8xl animate-fade-up"
+            className="mt-10 font-display text-[3.6rem] leading-none tracking-[0.11em] sm:text-[5.2rem] lg:text-[6.6rem] animate-fade-up"
             style={{ animationDelay: "150ms" }}
           >
-            <span className="text-shimmer title-glow">MATEUS MORAES</span>
+            <span className="name-sheen-wrap">
+              <span className="name-brushed title-glow">MATEUS MORAES</span>
+            </span>
           </h1>
 
           <p
