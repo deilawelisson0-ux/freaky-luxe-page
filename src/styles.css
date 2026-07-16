@@ -54,8 +54,8 @@
   --input: oklch(1 0 0 / 12%);
   --ring: oklch(0.55 0.22 25);
 
-  --brand-red: #d62828;
-  --brand-red-glow: rgba(214, 40, 40, 0.35);
+  --brand-red: #D90429;
+  --brand-red-glow: rgba(217,4,41, 0.35);
   --brand-black: #050505;
   --brand-silver: #c8c8c8;
   --brand-graphite: #1a1a1a;
@@ -177,7 +177,7 @@
   position: absolute;
   inset: -22%;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(138, 20, 20, 0.55) 0%, rgba(214,40,40,0.15) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(179,0,0, 0.55) 0%, rgba(217,4,41,0.15) 40%, transparent 70%);
   filter: blur(18px);
   z-index: -1;
   animation: orb-glow 4.5s ease-in-out infinite;
@@ -203,7 +203,7 @@
   border: 1px solid rgba(255,255,255,0.14);
   box-shadow:
     0 24px 50px -20px rgba(0,0,0,0.85),
-    0 0 40px -12px rgba(214,40,40,0.35),
+    0 0 40px -12px rgba(217,4,41,0.35),
     inset 0 1px 0 rgba(255,255,255,0.12),
     inset 0 -20px 30px -20px rgba(0,0,0,0.6);
 }
@@ -233,7 +233,7 @@
 }
 @media (hover: hover) {
   .partner-card:hover .partner-name {
-    text-shadow: 0 0 18px rgba(255,255,255,0.45), 0 0 32px rgba(214,40,40,0.25);
+    text-shadow: 0 0 18px rgba(255,255,255,0.45), 0 0 32px rgba(217,4,41,0.25);
   }
   .partner-card:hover .partner-orb { transform: translateY(-6px) scale(1.06); }
   .partner-card:hover .partner-orb::before { opacity: 1; transform: scale(1.15); }
@@ -269,7 +269,7 @@
   color: #fff;
   border-color: rgba(255,255,255,0.55);
   background: rgba(255,255,255,0.03);
-  box-shadow: 0 10px 30px -18px rgba(214,40,40,0.5), inset 0 0 0 1px rgba(255,255,255,0.06);
+  box-shadow: 0 10px 30px -18px rgba(217,4,41,0.5), inset 0 0 0 1px rgba(255,255,255,0.06);
 }
 .btn-access:hover::before { transform: translateX(120%); }
 .btn-access:active { transform: scale(0.97); }
@@ -282,13 +282,13 @@
   text-align: center;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 0%, rgba(214,40,40,0.18), transparent 60%),
+    radial-gradient(circle at 50% 0%, rgba(217,4,41,0.18), transparent 60%),
     linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
   backdrop-filter: blur(22px) saturate(160%);
   border: 1px solid rgba(255,255,255,0.10);
   box-shadow:
     0 30px 70px -30px rgba(0,0,0,0.9),
-    0 0 60px -25px rgba(214,40,40,0.4),
+    0 0 60px -25px rgba(217,4,41,0.4),
     inset 0 1px 0 rgba(255,255,255,0.10);
 }
 .coupon-card::before {
@@ -296,7 +296,7 @@
   position: absolute;
   inset: 1px;
   border-radius: inherit;
-  background: radial-gradient(circle at 50% 100%, rgba(214,40,40,0.10), transparent 60%);
+  background: radial-gradient(circle at 50% 100%, rgba(217,4,41,0.10), transparent 60%);
   pointer-events: none;
 }
 
@@ -312,11 +312,11 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #fff;
-  background: linear-gradient(135deg, #d62828 0%, #7a1010 100%);
+  background: linear-gradient(135deg, #D90429 0%, #B30000 100%);
   border: 1px solid rgba(255,255,255,0.14);
   border-radius: 999px;
   box-shadow:
-    0 12px 30px -10px rgba(214,40,40,0.55),
+    0 12px 30px -10px rgba(217,4,41,0.55),
     inset 0 1px 0 rgba(255,255,255,0.2);
   transition: transform 300ms cubic-bezier(0.2,0.7,0.2,1), box-shadow 300ms;
   cursor: pointer;
@@ -334,7 +334,7 @@
 }
 .btn-copy:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 40px -10px rgba(214,40,40,0.65), inset 0 1px 0 rgba(255,255,255,0.25);
+  box-shadow: 0 18px 40px -10px rgba(217,4,41,0.65), inset 0 1px 0 rgba(255,255,255,0.25);
 }
 .btn-copy:active { transform: translateY(0) scale(0.98); }
 .btn-copy.is-copied {
@@ -377,7 +377,7 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #fff;
-  background: linear-gradient(135deg, #d62828 0%, #8a1414 100%);
+  background: linear-gradient(135deg, #D90429 0%, #B30000 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   box-shadow: 0 10px 40px -10px var(--brand-red-glow), inset 0 1px 0 rgba(255,255,255,0.15);
@@ -473,7 +473,7 @@
   inset: -10%;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 60% 40% at 50% 55%, rgba(214,40,40,0.18), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 55%, rgba(217,4,41,0.18), transparent 70%),
     radial-gradient(ellipse 40% 30% at 30% 40%, rgba(20,20,20,0.6), transparent 70%),
     radial-gradient(ellipse 40% 30% at 70% 60%, rgba(15,15,15,0.55), transparent 70%);
   filter: blur(40px);
@@ -558,7 +558,7 @@
   margin: -1.5px 0 0 -1.5px;
   border-radius: 9999px;
   background: rgba(255,255,255,0.85);
-  box-shadow: 0 0 8px rgba(255,255,255,0.7), 0 0 14px rgba(214,40,40,0.5);
+  box-shadow: 0 0 8px rgba(255,255,255,0.7), 0 0 14px rgba(217,4,41,0.5);
   transform-origin: 0 0;
   will-change: transform;
 }
@@ -567,7 +567,7 @@
   text-shadow:
     0 0 1px rgba(255,255,255,0.35),
     0 0 18px rgba(255,255,255,0.08),
-    0 0 40px rgba(214,40,40,0.12);
+    0 0 40px rgba(217,4,41,0.12);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -634,7 +634,7 @@
   pointer-events: none;
   background:
     radial-gradient(circle at center, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.05) 22%, transparent 55%),
-    radial-gradient(circle at center, rgba(138,20,20,0.28) 0%, rgba(214,40,40,0.10) 40%, transparent 70%);
+    radial-gradient(circle at center, rgba(179,0,0,0.28) 0%, rgba(217,4,41,0.10) 40%, transparent 70%);
   filter: blur(24px);
   opacity: 0.9;
   z-index: 0;
@@ -661,7 +661,7 @@
   -webkit-mask-composite: xor;
           mask-composite: exclude;
   opacity: 0.75;
-  filter: drop-shadow(0 0 8px rgba(214,40,40,0.25));
+  filter: drop-shadow(0 0 8px rgba(217,4,41,0.25));
 }
 
 /* Rotating HUD ticks (very subtle, 60s/turn) */
@@ -677,13 +677,13 @@
       transparent 0deg 4deg, rgba(255,255,255,0.5) 4deg 4.4deg,
       transparent 4.4deg 30deg, rgba(255,255,255,0.35) 30deg 30.5deg,
       transparent 30.5deg 60deg, rgba(255,255,255,0.5) 60deg 60.4deg,
-      transparent 60.4deg 90deg, rgba(214,40,40,0.7) 90deg 90.6deg,
+      transparent 60.4deg 90deg, rgba(217,4,41,0.7) 90deg 90.6deg,
       transparent 90.6deg 120deg, rgba(255,255,255,0.35) 120deg 120.5deg,
       transparent 120.5deg 150deg, rgba(255,255,255,0.5) 150deg 150.4deg,
       transparent 150.4deg 180deg, rgba(255,255,255,0.35) 180deg 180.5deg,
       transparent 180.5deg 210deg, rgba(255,255,255,0.5) 210deg 210.4deg,
       transparent 210.4deg 240deg, rgba(255,255,255,0.35) 240deg 240.5deg,
-      transparent 240.5deg 270deg, rgba(214,40,40,0.7) 270deg 270.6deg,
+      transparent 240.5deg 270deg, rgba(217,4,41,0.7) 270deg 270.6deg,
       transparent 270.6deg 300deg, rgba(255,255,255,0.35) 300deg 300.5deg,
       transparent 300.5deg 330deg, rgba(255,255,255,0.5) 330deg 330.4deg,
       transparent 330.4deg 360deg
@@ -703,7 +703,7 @@
   border-radius: 9999px;
   pointer-events: none;
   box-shadow:
-    inset 0 0 40px 2px rgba(214,40,40,0.28),
+    inset 0 0 40px 2px rgba(217,4,41,0.28),
     inset 0 0 90px -10px rgba(0,0,0,0.85),
     inset 0 1px 0 rgba(255,255,255,0.1);
 }
@@ -729,7 +729,7 @@
   filter:
     drop-shadow(0 1px 0 rgba(255,255,255,0.12))
     drop-shadow(0 2px 14px rgba(0,0,0,0.6))
-    drop-shadow(0 0 22px rgba(214,40,40,0.10));
+    drop-shadow(0 0 22px rgba(217,4,41,0.10));
   letter-spacing: 0.11em;
   font-weight: 400;
 }
