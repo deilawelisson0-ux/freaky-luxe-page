@@ -177,7 +177,7 @@
   position: absolute;
   inset: -22%;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(179,0,0, 0.55) 0%, rgba(217,4,41,0.15) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(225,6,0, 0.55) 0%, rgba(217,4,41,0.15) 40%, transparent 70%);
   filter: blur(18px);
   z-index: -1;
   animation: orb-glow 4.5s ease-in-out infinite;
@@ -312,7 +312,7 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #fff;
-  background: linear-gradient(135deg, #D90429 0%, #B30000 100%);
+  background: linear-gradient(135deg, #D90429 0%, #E10600 100%);
   border: 1px solid rgba(255,255,255,0.14);
   border-radius: 999px;
   box-shadow:
@@ -377,7 +377,7 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #fff;
-  background: linear-gradient(135deg, #D90429 0%, #B30000 100%);
+  background: linear-gradient(135deg, #D90429 0%, #E10600 100%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
   box-shadow: 0 10px 40px -10px var(--brand-red-glow), inset 0 1px 0 rgba(255,255,255,0.15);
@@ -634,7 +634,7 @@
   pointer-events: none;
   background:
     radial-gradient(circle at center, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.05) 22%, transparent 55%),
-    radial-gradient(circle at center, rgba(217,4,41,0.55) 0%, rgba(255,42,42,0.22) 30%, rgba(179,0,0,0.12) 55%, transparent 75%);
+    radial-gradient(circle at center, rgba(217,4,41,0.55) 0%, rgba(255,42,42,0.22) 30%, rgba(225,6,0,0.12) 55%, transparent 75%);
   filter: blur(24px);
   opacity: 0.9;
   z-index: 0;
