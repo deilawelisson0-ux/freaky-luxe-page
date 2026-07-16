@@ -157,7 +157,7 @@ function HeroPortrait() {
         className="absolute inset-0 rounded-full animate-pulse-glow"
         style={{
           background:
-            "radial-gradient(circle at center, rgba(214,40,40,0.32) 0%, rgba(214,40,40,0.10) 40%, transparent 70%)",
+            "radial-gradient(circle at center, rgba(217,4,41,0.32) 0%, rgba(217,4,41,0.10) 40%, transparent 70%)",
           filter: "blur(30px)",
         }}
       />
@@ -178,7 +178,7 @@ function HeroPortrait() {
         className="absolute inset-[-6%] rounded-full animate-spin-slow opacity-40"
         style={{
           background:
-            "conic-gradient(from 0deg, transparent 0deg, rgba(214,40,40,0.8) 40deg, transparent 90deg, transparent 180deg, rgba(255,255,255,0.5) 220deg, transparent 260deg, transparent 360deg)",
+            "conic-gradient(from 0deg, transparent 0deg, rgba(217,4,41,0.8) 40deg, transparent 90deg, transparent 180deg, rgba(255,255,255,0.5) 220deg, transparent 260deg, transparent 360deg)",
           WebkitMask: "radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))",
           mask: "radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))",
         }}
@@ -209,7 +209,7 @@ function HeroPortrait() {
             className="absolute inset-0 rounded-full"
             style={{
               boxShadow:
-                "0 40px 80px -20px rgba(0,0,0,0.95), 0 0 70px -10px rgba(214,40,40,0.35), inset 0 0 0 1px rgba(255,255,255,0.08)",
+                "0 40px 80px -20px rgba(0,0,0,0.95), 0 0 70px -10px rgba(217,4,41,0.35), inset 0 0 0 1px rgba(255,255,255,0.08)",
             }}
           />
           <img
@@ -249,7 +249,7 @@ function CouponCard() {
         <div className="mt-4 flex items-center justify-center">
           <span
             className="font-display text-4xl sm:text-5xl tracking-[0.25em]"
-            style={{ color: "#fff", textShadow: "0 0 24px rgba(214,40,40,0.55)" }}
+            style={{ color: "#fff", textShadow: "0 0 24px rgba(217,4,41,0.55)" }}
           >
             MATEUS
           </span>
@@ -328,7 +328,7 @@ function LinkTile({
     >
       <span
         className="pointer-events-none absolute inset-y-0 left-0 w-1 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{ background: "linear-gradient(180deg, #d62828, transparent)" }}
+        style={{ background: "linear-gradient(180deg, #D90429, transparent)" }}
       />
       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/5 text-white/80 transition group-hover:bg-white/10">
         {icon}
@@ -360,7 +360,7 @@ function Landing() {
         className="pointer-events-none fixed inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, rgba(214,40,40,0.10), transparent 60%), radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.03), transparent 60%)",
+            "radial-gradient(ellipse at 50% 0%, rgba(217,4,41,0.10), transparent 60%), radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.03), transparent 60%)",
         }}
       />
 
@@ -374,7 +374,7 @@ function Landing() {
 
           <div className="animate-fade-in">
             <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/60">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#d62828] shadow-[0_0_10px_#d62828]" />
+              <span className="h-1.5 w-1.5 rounded-full bg-[#D90429] shadow-[0_0_10px_#D90429]" />
               @mateusfreaky
             </span>
           </div>
@@ -397,11 +397,11 @@ function Landing() {
             style={{ animationDelay: "300ms" }}
           >
             <span>Treino</span>
-            <span className="text-[#d62828]">•</span>
+            <span className="text-[#D90429]">•</span>
             <span>Dieta</span>
-            <span className="text-[#d62828]">•</span>
+            <span className="text-[#D90429]">•</span>
             <span>Lifestyle</span>
-            <span className="text-[#d62828]">•</span>
+            <span className="text-[#D90429]">•</span>
             <span>Meio-Maratonista</span>
           </p>
 
@@ -438,9 +438,9 @@ function Landing() {
       <section id="evolucao" className="relative z-10 px-6 py-24 sm:py-32">
         <div ref={consultRef} className="reveal mx-auto max-w-5xl">
           <div className="text-center">
-            <span className="text-[10px] uppercase tracking-[0.4em] text-[#d62828]">Consultoria</span>
+            <span className="text-[10px] uppercase tracking-[0.4em] text-[#D90429]">Consultoria</span>
             <h2 className="mt-3 font-display text-4xl tracking-widest sm:text-6xl">
-              CONSULTORIA <span className="text-[#d62828]">INDIVIDUALIZADA</span>
+              CONSULTORIA <span className="text-[#D90429]">INDIVIDUALIZADA</span>
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-sm text-white/60 sm:text-base">
               Treino, dieta e acompanhamento montados sob medida para transformar sua rotina em resultado real.
@@ -469,7 +469,7 @@ function Landing() {
                   "Mentalidade, disciplina e evolução contínua",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#d62828]/20 text-[#d62828]">
+                    <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#D90429]/20 text-[#D90429]">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none">
                         <path d="M5 12l5 5L20 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -493,7 +493,7 @@ function Landing() {
       {/* PARTNERS */}
       <section className="relative z-10 px-6 py-24">
         <div ref={partnersRef} className="reveal mx-auto max-w-4xl text-center">
-          <span className="text-[10px] uppercase tracking-[0.4em] text-[#d62828]">Parceiros</span>
+          <span className="text-[10px] uppercase tracking-[0.4em] text-[#D90429]">Parceiros</span>
           <h2 className="mt-3 font-display text-3xl tracking-widest sm:text-5xl">MARCAS PARCEIRAS</h2>
           <p className="mx-auto mt-4 max-w-lg text-sm text-white/60 sm:text-base">
             Utilizo e recomendo apenas marcas que fazem parte da minha rotina e entregam qualidade de verdade.
@@ -538,7 +538,7 @@ function Landing() {
       <section className="relative z-10 px-6 py-20">
         <div ref={linksRef} className="reveal mx-auto max-w-xl">
           <div className="text-center">
-            <span className="text-[10px] uppercase tracking-[0.4em] text-[#d62828]">Redes</span>
+            <span className="text-[10px] uppercase tracking-[0.4em] text-[#D90429]">Redes</span>
             <h2 className="mt-3 font-display text-3xl tracking-widest sm:text-5xl">ME SIGA</h2>
           </div>
           <div className="mt-8 grid gap-3">
@@ -582,7 +582,7 @@ function Landing() {
       <footer className="relative z-10 border-t border-white/5 px-6 py-14">
         <div className="mx-auto max-w-5xl text-center">
           <p className="font-display text-2xl tracking-[0.3em] sm:text-3xl">
-            PERFORMANCE. <span className="text-[#d62828]">DISCIPLINA.</span> RESULTADOS.
+            PERFORMANCE. <span className="text-[#D90429]">DISCIPLINA.</span> RESULTADOS.
           </p>
           <a
             href={LINKS.instagram}
