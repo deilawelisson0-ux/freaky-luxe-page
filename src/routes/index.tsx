@@ -403,9 +403,14 @@ function Landing() {
 
       {/* HERO */}
       <section className="relative z-10 flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-16">
+        <div className="hero-bg-cinema" />
+        <div className="hero-bg-volumetric" />
+        <div className="hero-bg-studio-glow" />
+        <div className="hero-bg-carbon" />
         <div className="hero-fog" />
         <div className="hero-dust" />
-        <Particles />
+        <BokehParticles />
+
 
         <div className="relative z-10 flex flex-col items-center text-center">
 
