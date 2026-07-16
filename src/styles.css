@@ -177,7 +177,7 @@
   position: absolute;
   inset: -22%;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(225,6,0, 0.55) 0%, rgba(217,4,41,0.15) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(225,6,0,0.70) 0%, rgba(255,42,42,0.28) 35%, rgba(217,4,41,0.12) 60%, transparent 75%);
   filter: blur(18px);
   z-index: -1;
   animation: orb-glow 4.5s ease-in-out infinite;
