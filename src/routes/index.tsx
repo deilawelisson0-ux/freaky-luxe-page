@@ -104,6 +104,43 @@ function Particles() {
   );
 }
 
+function BokehParticles() {
+  // Few, large, blurred bokeh particles — studio dust
+  const items = [
+    { left: 12, top: 28, size: 10, dx: 30, dy: -80, dur: 22, delay: 0, o: 0.55 },
+    { left: 82, top: 22, size: 14, dx: -40, dy: -60, dur: 26, delay: 3, o: 0.5 },
+    { left: 68, top: 68, size: 8, dx: 20, dy: -100, dur: 20, delay: 6, o: 0.6 },
+    { left: 22, top: 74, size: 12, dx: -25, dy: -90, dur: 24, delay: 1.5, o: 0.55 },
+    { left: 48, top: 18, size: 6, dx: 10, dy: -70, dur: 18, delay: 4, o: 0.5 },
+    { left: 90, top: 55, size: 9, dx: -35, dy: -80, dur: 23, delay: 8, o: 0.45 },
+    { left: 8, top: 55, size: 11, dx: 25, dy: -90, dur: 25, delay: 2, o: 0.5 },
+    { left: 55, top: 85, size: 7, dx: -15, dy: -110, dur: 21, delay: 5, o: 0.55 },
+  ];
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {items.map((p, i) => (
+        <span
+          key={i}
+          className="hero-bokeh"
+          style={{
+            width: p.size,
+            height: p.size,
+            left: `${p.left}%`,
+            top: `${p.top}%`,
+            // @ts-expect-error css vars
+            "--dx": `${p.dx}px`,
+            "--dy": `${p.dy}px`,
+            "--dur": `${p.dur}s`,
+            "--delay": `${p.delay}s`,
+            "--o": p.o,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
+
 function HeroPortrait() {
   const wrap = useRef<HTMLDivElement>(null);
   const [t, setT] = useState({ x: 0, y: 0, rx: 0, ry: 0 });
