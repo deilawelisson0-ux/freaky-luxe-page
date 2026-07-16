@@ -634,7 +634,7 @@
   pointer-events: none;
   background:
     radial-gradient(circle at center, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.05) 22%, transparent 55%),
-    radial-gradient(circle at center, rgba(179,0,0,0.28) 0%, rgba(217,4,41,0.10) 40%, transparent 70%);
+    radial-gradient(circle at center, rgba(217,4,41,0.55) 0%, rgba(255,42,42,0.22) 30%, rgba(179,0,0,0.12) 55%, transparent 75%);
   filter: blur(24px);
   opacity: 0.9;
   z-index: 0;
