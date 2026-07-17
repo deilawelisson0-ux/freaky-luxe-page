@@ -868,3 +868,46 @@
 .hero-metallic-ring { filter: drop-shadow(0 0 8px rgba(225,6,0,0.25)); }
 .hero-brushed-ring { filter: drop-shadow(0 0 10px rgba(225,6,0,0.28)) drop-shadow(0 1px 0 rgba(255,255,255,0.08)); }
 
+/* ===== Mobile: keep the same desktop look, just concentrate the red glow in the center ===== */
+@media (max-width: 768px) {
+  /* Tighter cinematic gradient so red fades before the screen edges */
+  .hero-bg-cinema {
+    background:
+      radial-gradient(ellipse 55% 30% at 50% 50%, rgba(225,6,0,0.55) 0%, rgba(179,0,0,0.28) 28%, rgba(80,0,0,0.12) 50%, transparent 72%),
+      radial-gradient(ellipse 90% 70% at 50% 50%, transparent 25%, rgba(2,2,2,0.75) 55%, #020202 85%),
+      linear-gradient(180deg, #050505 0%, #020202 100%);
+  }
+
+  /* Shrink the massive studio glow and keep it centered behind the portrait */
+  .hero-bg-studio-glow {
+    width: 480px;
+    height: 480px;
+    max-width: 85vw;
+    max-height: 85vw;
+    filter: blur(45px);
+    opacity: 0.85;
+  }
+
+  /* Pull the cinematic spotlight tighter so light stays over the portrait/name */
+  .hero-spotlight {
+    width: 320px;
+    height: 320px;
+    filter: blur(20px);
+  }
+
+  /* Prevent volumetric rays from bleeding to the edges */
+  .hero-bg-volumetric {
+    width: 110vmax;
+    height: 110vmax;
+    mask-image: radial-gradient(circle at center, #000 5%, transparent 45%);
+    -webkit-mask-image: radial-gradient(circle at center, #000 5%, transparent 45%);
+    opacity: 0.6;
+  }
+
+  /* Carbon texture fades further from center */
+  .hero-bg-carbon {
+    mask-image: radial-gradient(ellipse 70% 55% at 50% 50%, #000 15%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 50%, #000 15%, transparent 70%);
+  }
+}
+
