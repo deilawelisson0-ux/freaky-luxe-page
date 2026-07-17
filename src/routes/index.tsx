@@ -252,9 +252,14 @@ function HeroPortrait() {
           <img
             src={mateusAsset.url}
             alt="Mateus Moraes"
+            width={440}
+            height={440}
+            fetchPriority="high"
+            decoding="async"
             className="relative h-full w-full rounded-full object-cover"
             draggable={false}
           />
+
           {/* Inner red rim */}
           <div className="hero-inner-rim" />
           {/* Brushed metallic signature ring */}
