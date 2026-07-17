@@ -252,9 +252,14 @@ function HeroPortrait() {
           <img
             src={mateusAsset.url}
             alt="Mateus Moraes"
+            width={440}
+            height={440}
+            fetchPriority="high"
+            decoding="async"
             className="relative h-full w-full rounded-full object-cover"
             draggable={false}
           />
+
           {/* Inner red rim */}
           <div className="hero-inner-rim" />
           {/* Brushed metallic signature ring */}
@@ -320,8 +325,9 @@ function PartnerCard({ p, i }: { p: (typeof PARTNERS)[number]; i: number }) {
         className="partner-orb block"
       >
         <span className="partner-orb-inner">
-          <img src={p.logo} alt={p.name} loading="lazy" draggable={false} />
+          <img src={p.logo} alt={p.name} width={160} height={160} loading="lazy" decoding="async" draggable={false} />
         </span>
+
       </a>
       <h3 className="partner-name mt-8 font-display text-xl tracking-[0.2em] sm:text-2xl">
         {p.name}
@@ -492,7 +498,7 @@ function Landing() {
           <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:items-stretch">
             <div className="glass-strong relative overflow-hidden rounded-2xl">
               <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-full">
-                <img src={consultoriaAsset.url} alt="Transformação real" className="h-full w-full object-cover" />
+                <img src={consultoriaAsset.url} alt="Transformação real" width={1200} height={900} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <p className="text-[10px] uppercase tracking-[0.35em] text-white/60">Resultado real</p>
