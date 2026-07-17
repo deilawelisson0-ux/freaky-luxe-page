@@ -498,7 +498,7 @@ function Landing() {
           <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:items-stretch">
             <div className="glass-strong relative overflow-hidden rounded-2xl">
               <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-full">
-                <img src={consultoriaAsset.url} alt="Transformação real" className="h-full w-full object-cover" />
+                <img src={consultoriaAsset.url} alt="Transformação real" width={1200} height={900} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <p className="text-[10px] uppercase tracking-[0.35em] text-white/60">Resultado real</p>
