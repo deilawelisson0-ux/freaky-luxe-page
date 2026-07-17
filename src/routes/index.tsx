@@ -325,8 +325,9 @@ function PartnerCard({ p, i }: { p: (typeof PARTNERS)[number]; i: number }) {
         className="partner-orb block"
       >
         <span className="partner-orb-inner">
-          <img src={p.logo} alt={p.name} loading="lazy" draggable={false} />
+          <img src={p.logo} alt={p.name} width={160} height={160} loading="lazy" decoding="async" draggable={false} />
         </span>
+
       </a>
       <h3 className="partner-name mt-8 font-display text-xl tracking-[0.2em] sm:text-2xl">
         {p.name}
