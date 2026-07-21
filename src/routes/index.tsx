@@ -506,7 +506,7 @@ function Landing() {
                   height={1500}
                   loading="lazy"
                   decoding="async"
-                  className="proof-img h-full w-full object-contain"
+                  className="proof-img h-full w-full object-cover object-center"
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#050505] via-[#050505]/70 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
