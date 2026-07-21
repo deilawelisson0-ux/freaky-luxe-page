@@ -5,6 +5,7 @@ import monteLesteAsset from "@/assets/monte-leste.asset.json";
 import darkLabAsset from "@/assets/dark-lab.asset.json";
 import formulaAsset from "@/assets/formula-expressa.asset.json";
 import consultoriaAsset from "@/assets/consultoria.asset.json";
+import transformacaoAsset from "@/assets/transformacao-real.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -495,11 +496,19 @@ function Landing() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:items-stretch">
-            <div className="glass-strong relative overflow-hidden rounded-2xl">
-              <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-full">
-                <img src={consultoriaAsset.url} alt="Transformação real" width={1200} height={900} loading="lazy" decoding="async" className="h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" />
+          <div className="mt-12 grid gap-6 lg:grid-cols-[1.25fr_1fr] lg:items-stretch">
+            <div className="proof-card relative overflow-hidden rounded-2xl">
+              <div className="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-auto lg:h-full">
+                <img
+                  src={transformacaoAsset.url}
+                  alt="Transformação real — antes e depois"
+                  width={1200}
+                  height={1500}
+                  loading="lazy"
+                  decoding="async"
+                  className="proof-img h-full w-full object-cover object-center"
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#050505] via-[#050505]/70 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <p className="text-[10px] uppercase tracking-[0.35em] text-white/60">Resultado real</p>
                   <p className="font-display text-2xl tracking-wider">Antes • Depois</p>
