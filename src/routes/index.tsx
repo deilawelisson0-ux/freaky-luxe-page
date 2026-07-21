@@ -5,6 +5,7 @@ import monteLesteAsset from "@/assets/monte-leste.asset.json";
 import darkLabAsset from "@/assets/dark-lab.asset.json";
 import formulaAsset from "@/assets/formula-expressa.asset.json";
 import consultoriaAsset from "@/assets/consultoria.asset.json";
+import transformacaoAsset from "@/assets/transformacao-real.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Landing,
