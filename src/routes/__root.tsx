@@ -11,6 +11,15 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import mateusAsset from "../assets/mateus.asset.json";
+
+const ASSET_HOST = "https://freaky-luxe-page.lovable.app";
+
+function resolveHostedAsset(url: string) {
+  return import.meta.env.BASE_URL !== "/" && url.startsWith("/__l5e/")
+    ? `${ASSET_HOST}${url}`
+    : url;
+}
 
 function NotFoundComponent() {
   return (
@@ -61,7 +70,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             Try again
           </button>
           <a
-            href="/"
+            href={import.meta.env.BASE_URL}
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             Go home
@@ -91,11 +100,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.ico`, type: "image/x-icon" },
       { rel: "canonical", href: "https://freaky-luxe-page.lovable.app/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "preload", as: "image", href: "/__l5e/assets-v1/84dff378-701c-40cc-841b-3cca459025eb/mateus.jpeg", fetchpriority: "high" },
+      { rel: "preload", as: "image", href: resolveHostedAsset(mateusAsset.url), fetchpriority: "high" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap" },
     ],
 
