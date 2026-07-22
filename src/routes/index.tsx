@@ -7,6 +7,17 @@ import formulaAsset from "@/assets/formula-expressa.asset.json";
 import consultoriaAsset from "@/assets/consultoria.asset.json";
 import transformacaoAsset from "@/assets/transformacao-real.png.asset.json";
 
+const ASSET_HOST = "https://freaky-luxe-page.lovable.app";
+
+function resolveHostedAsset(url: string) {
+  return import.meta.env.BASE_URL !== "/" && url.startsWith("/__l5e/")
+    ? `${ASSET_HOST}${url}`
+    : url;
+}
+
+const mateusImageUrl = resolveHostedAsset(mateusAsset.url);
+const transformacaoImageUrl = resolveHostedAsset(transformacaoAsset.url);
+
 export const Route = createFileRoute("/")({
   component: Landing,
 });
@@ -31,19 +42,19 @@ const LINKS = {
 const PARTNERS = [
   {
     name: "Monte Leste",
-    logo: monteLesteAsset.url,
+    logo: resolveHostedAsset(monteLesteAsset.url),
     href: LINKS.monteLeste,
     description: "Streetwear premium para quem vive o lifestyle fitness.",
   },
   {
     name: "Dark Lab",
-    logo: darkLabAsset.url,
+    logo: resolveHostedAsset(darkLabAsset.url),
     href: LINKS.darkLab,
     description: "Suplementação de alta performance para maximizar seus resultados.",
   },
   {
     name: "Fórmula Expressa",
-    logo: formulaAsset.url,
+    logo: resolveHostedAsset(formulaAsset.url),
     href: LINKS.formula,
     description: "Manipulados personalizados para potencializar sua evolução.",
   },
@@ -251,7 +262,7 @@ function HeroPortrait() {
             }}
           />
           <img
-            src={mateusAsset.url}
+            src={mateusImageUrl}
             alt="Mateus Moraes"
             width={440}
             height={440}
@@ -500,7 +511,7 @@ function Landing() {
             <div className="proof-card relative overflow-hidden rounded-2xl">
               <div className="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-auto lg:h-full">
                 <img
-                  src={transformacaoAsset.url}
+                  src={transformacaoImageUrl}
                   alt="Transformação real — antes e depois"
                   width={1200}
                   height={1500}
