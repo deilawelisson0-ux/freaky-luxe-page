@@ -32,6 +32,8 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Build static site
+        env:
+          GITHUB_PAGES: "true"
         run: bun run build:github
 
       - name: Configure Pages
