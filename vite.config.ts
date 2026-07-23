@@ -12,7 +12,7 @@ const githubPagesBase = `/${repositoryName}/`;
 
 export default defineConfig({
   vite: {
-    base: isGitHubPagesBuild ? githubPagesBase : undefined,
+    base: "/",
     build: {
       outDir: "dist",
     },
