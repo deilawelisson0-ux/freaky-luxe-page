@@ -11,7 +11,7 @@ const ASSET_HOST = "https://freaky-luxe-page.lovable.app";
 
 function resolveHostedAsset(url: string) {
   return url.startsWith("/__l5e/")
-    ? ${ASSET_HOST}${url}
+    ? `${ASSET_HOST}${url}`
     : url;
 }
 
