@@ -10,8 +10,8 @@ import transformacaoAsset from "@/assets/transformacao-real.png.asset.json";
 const ASSET_HOST = "https://freaky-luxe-page.lovable.app";
 
 function resolveHostedAsset(url: string) {
-  return import.meta.env.BASE_URL !== "/" && url.startsWith("/__l5e/")
-    ? `${ASSET_HOST}${url}`
+  return url.startsWith("/__l5e/")
+    ? ${ASSET_HOST}${url}
     : url;
 }
 
